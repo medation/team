@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sbc</groupId>
-	<artifactId>config</artifactId>
-	<version>0.1</version>
-	<name>config</name>
-	<description>SBC - Config</description>
+	<artifactId>projet</artifactId>
+	<version>1.0</version>
+	<name>projet</name>
+	<description>SBC - Service projet</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -21,19 +21,18 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure</artifactId>
-			<version>1.5.10.RELEASE</version>
 		</dependency>
 	</dependencies>
 
