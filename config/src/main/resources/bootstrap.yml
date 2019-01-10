@@ -1,2 +1,13 @@
 server:
   port: 8088
+
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        composite:
+          - type: native
+            search-locations: classpath:/services
+        bootstrap: true

@@ -7,11 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config" />
+        <module name="gateway" />
+        <module name="projet" />
         <module name="registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="config" target="1.8" />
+      <module name="gateway" target="1.8" />
+      <module name="projet" target="1.8" />
       <module name="registry" target="1.8" />
       <module name="team" target="1.5" />
     </bytecodeTargetLevel>

@@ -11,6 +11,8 @@
 	<modules>
 		<module>config</module>
 		<module>registry</module>
+		<module>gateway</module>
+		<module>projet</module>
 	</modules>
 	
 </project>
