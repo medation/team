@@ -6,16 +6,8 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8061/eureka/
 
-spring:
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-      - id: projet
-        uri: lb://projet
-        predicates:
-        - Path=/projet/**
-        filters:
-        - RewritePath=/projet/(?<path>.*), /$\{path}
+zuul:
+  routes:
+    projet:
+      path: /projet/**
+      serviceId: projet
