@@ -12,6 +12,7 @@
 		<module>config</module>
 		<module>registry</module>
 		<module>gateway</module>
+		<module>authentication</module>
 		<module>projet</module>
 	</modules>
 	
