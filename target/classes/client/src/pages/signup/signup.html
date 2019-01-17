@@ -1,0 +1,84 @@
+<ion-content padding class="no-scroll">
+
+  <div class="title">JibDuira</div>
+
+  <div>
+    
+    <p class="error-message" *ngIf="username.errors?.required && username.dirty">
+      Vous devez entrer un nom d'utilisateur
+    </p>
+
+    <p class="error-message" *ngIf="username.errors?.usernameTaken">
+      Nom d'utilisateur déja pris
+    </p>
+
+    <p class="error-message" *ngIf="password.errors?.required && password.dirty">
+      Vous devez entrer un mot de passe
+    </p>   
+
+    <p class="error-message" *ngIf="email.errors?.required && email.dirty">
+      Vous devez entrer un email
+     </p>
+
+     <p class="error-message" *ngIf="email.errors?.email && email.dirty">
+       Email est non valide
+     </p>
+        
+     <p class="error-message" *ngIf="lastName.errors?.required && lastName.dirty">
+       Vous devez entrer votre nom
+     </p>
+
+     <p class="error-message" *ngIf="name.errors?.required && name.dirty">
+       Vous devez entrer votre prénom
+     </p>
+
+    <form #form="ngForm" (ngSubmit)="signup(form.value)" novalidate>
+
+        
+        <ion-item>
+          <ion-input type="text" name="username" ngModel required #username="ngModel"
+                    [class.invalid]="username.errors && username.dirty"
+                    placeholder="Nom d'utilisateur"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" name="password" ngModel required #password="ngModel"
+                    [class.invalid]="password.errors && password.dirty"
+                    placeholder="Mot de passe"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-input type="email" name="email" ngModel required email #email="ngModel"
+                    [class.invalid]="email.errors && email.dirty"
+                    placeholder="Adresse email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" name="lastName" ngModel required #lastName="ngModel"
+                    [class.invalid]="lastName.errors && lastName.dirty"
+                    placeholder="Nom"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" name="name" ngModel required #name="ngModel"
+                    [class.invalid]="name.errors && name.dirty"
+                    placeholder="Prénom"></ion-input>
+        </ion-item>
+
+        <ion-buttons style="margin-top : 20px;" end>
+            <button ion-button color="primary" round outline type="submit" [disabled]="!form.valid">S'enregistrer</button>
+        </ion-buttons>
+
+    </form>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar class="footer">
+    <div (click)="login()">
+      <span>Vous avez déja un compte ? <strong>Connectez-vous vite</strong>.</span>
+    </div>
+  </ion-toolbar>
+</ion-footer>

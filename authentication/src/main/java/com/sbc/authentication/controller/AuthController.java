@@ -17,9 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "/")
 public class AuthController {
 
     @Autowired
@@ -71,7 +72,8 @@ public class AuthController {
             return "EXISTS";
         }
         List<Role> roles = new ArrayList<>();
-        roles.add(roleRepository.findOne(1));
+        Optional<Role> role = roleRepository.findById(1);
+        roles.add(role.get());
         user.setRoles(roles);
         user.encodePassword(this.passwordEncoder);
         this.userService.save(user);

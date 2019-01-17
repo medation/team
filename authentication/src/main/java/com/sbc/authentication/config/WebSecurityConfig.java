@@ -59,6 +59,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder(12);
 	}
 
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -74,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //			    .and()
 			  .authorizeRequests()
-			    .antMatchers("/api/public/**").permitAll()
+			    .antMatchers("/console","/h2").permitAll()
 			    .antMatchers("/api/**").authenticated()
 			     .and()
 			  .apply(new JwtConfigurer(this.tokenProvider));
@@ -84,7 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			  .httpBasic()
 			  .and()
 			  .authorizeRequests()
-			    .antMatchers("/","/login","/registre").permitAll()
+			    .antMatchers("/","/login","/registre","/console","/h2").permitAll()
 			    .antMatchers("/**").hasAuthority("USER")
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        Se déconnecter <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="no-scroll card-background-page" >
+
+  
+  <div class="title">JibDuira</div>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-icon name="information-circle" style="text-align: center"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+      Bonjour, ceci est une application mobile hybride d'un système d'élaboration dynamique et adaptatif d'un circuit touristique.
+      Une application open-source disponible sur github : medation/jibduira.
+    </ion-card-content>
+  </ion-card>
+
+  <button ion-button outline round large full (click)="goToApplication()"> Entrer </button>
+
+</ion-content>

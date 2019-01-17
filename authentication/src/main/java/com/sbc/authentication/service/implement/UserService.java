@@ -8,6 +8,8 @@ import com.sbc.authentication.model.User;
 import com.sbc.authentication.repository.UserRepository;
 import com.sbc.authentication.service.IUserService;
 
+import java.util.Optional;
+
 @Service("userService")
 public class UserService implements IUserService{
 
@@ -27,8 +29,8 @@ public class UserService implements IUserService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public User findById(int id){
-		User user = userRepository.findOne(id);
+	public Optional<User> findById(Long id){
+		Optional<User> user = userRepository.findById(id);
 		return user;
 	}
 

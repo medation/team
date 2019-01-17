@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: projet
+  cloud:
+    config:
+      uri: http://localhost:8060
