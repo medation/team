@@ -43,7 +43,6 @@ public class User {
 
 	public User(String name, String lastName, String username, String password, String email) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.username = username;

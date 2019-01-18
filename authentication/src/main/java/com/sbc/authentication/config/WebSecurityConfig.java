@@ -51,7 +51,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usersByUsernameQuery(usersQuery)
 	            .authoritiesByUsernameQuery(rolesQuery)
 				.passwordEncoder(passwordEncoder());
-//		System.out.println(authentication.toString());
 	}
 	
 	@Bean
@@ -67,7 +66,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-	    // @formatter:off
 		
 		//For rest service authentication with jwt
 			httpSecurity
@@ -79,38 +77,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //			    .and()
 			  .authorizeRequests()
-			    .antMatchers("/console","/h2").permitAll()
+			    .antMatchers("/login","/registre","/console","/h2").permitAll()
 			    .antMatchers("/api/**").authenticated()
 			     .and()
 			  .apply(new JwtConfigurer(this.tokenProvider));
-			  
-	    //For webserver authentication without jwt
-			httpSecurity
-			  .httpBasic()
-			  .and()
-			  .authorizeRequests()
-			    .antMatchers("/","/login","/registre","/console","/h2").permitAll()
-			    .antMatchers("/**").hasAuthority("USER")
-				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-				.authenticated().and().csrf().disable().formLogin()
-				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/")
-				.usernameParameter("username")
-				.passwordParameter("password")
-				.and().logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/access-denied");
-			
-			   
-			// @formatter:on
 	}
-	
-	@Override
-	public void configure(WebSecurity webSecurity) throws Exception {
-		webSecurity
-	       .ignoring()
-	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/color/**", "/fonts/**", "/font-awesome/**");
-	}
+
 
 }
