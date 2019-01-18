@@ -11,6 +11,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Component
@@ -27,11 +30,14 @@ public class FakeData implements ApplicationRunner {
 
         Role user = new Role(1,"USER");
         roleRepository.save(user);
-        Role admin = new Role(2,"ADMIN");
-        roleRepository.save(admin);
+
 
         User userTest = new User("Mohamed","Elhachimi","userTest","passTest","test@mail.com");
         userTest.encodePassword(new BCryptPasswordEncoder(12));
+        List<Role> roles = new ArrayList<>();
+        Role admin = new Role(2,"ADMIN");
+        roles.add(admin);
+        userTest.setRoles(roles);
         userRepository.save(userTest);
 
     }
