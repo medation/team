@@ -45,8 +45,8 @@ public class AuthController {
 
     @GetMapping("/authenticate")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void authenticate() {
-
+    public String authenticate() {
+        return "Is Connected";
     }
 
     @PostMapping("/login")
